@@ -10,23 +10,21 @@
 ###############################################################################
 
 import urllib2
-
-
-def basic_authorization(user, password):
-	s = user + ":" + password
-	return "Basic " + s.encode("base64").rstrip()
 	
 geoserverRestUrl = str(arcpy.GetParameterAsText(0)) + '/workspaces'	
-workspaceAdi  = '<workspace><name>' + str(arcpy.GetParameterAsText(1)) +'</name></workspace>'
+workspaceAdi  = str(arcpy.GetParameterAsText(1))
 kAdi = str(arcpy.GetParameterAsText(2))
 sifre  = str(arcpy.GetParameterAsText(3))
+
+girisBasic = 'Basic ' + (kAdi + ':' + sifre).encode('base64').rstrip()
+
+veri  = '<workspace><name>' + workspaceAdi + '</name></workspace>'
 	
 request = urllib2.Request(geoserverRestUrl)
-request.add_header("Authorization", basic_authorization(kAdi, sifre))
+request.add_header("Authorization", girisBasic)
 request.add_header("Content-type", "text/xml")
-
 request.add_header("Accept", "*/*")
-request.add_data(workspaceAdi)
+request.add_data(veri)
 response = urllib2.urlopen(request)
 
 

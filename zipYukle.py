@@ -11,26 +11,22 @@
 
 import urllib2
 import arcpy
-
-
-def basic_authorization(user, password):
-	s = user + ":" + password
-	return "Basic " + s.encode("base64").rstrip()
 	
 
-zipDosya = str(arcpy.GetParameterAsText(0))
-binaryVeri = open(zipDosya, 'rb').read()
-	
+zipDosya = str(arcpy.GetParameterAsText(0))	
 geoserverRestUrl = str(arcpy.GetParameterAsText(1))
 workspaceAdi = str(arcpy.GetParameterAsText(2))
 kAdi = str(arcpy.GetParameterAsText(3))
 sifre  = str(arcpy.GetParameterAsText(4))
 
-istek = urllib2.Request(geoserverRestUrl + '/workspaces/' + workspaceAdi + '/datastores/' + os.path.basename(zipDosya)[:-4] + '/file.shp')
-istek.add_header("Authorization", basic_authorization(kAdi, sifre))
+binaryVeri = open(zipDosya, 'rb').read()
+girisBasic = 'Basic ' + (kAdi + ':' + sifre).encode('base64').rstrip()
+
+url = geoserverRestUrl + '/workspaces/' + workspaceAdi + '/datastores/' + os.path.basename(zipDosya)[:-4] + '/file.shp'
+istek = urllib2.Request(url)
+istek.add_header("Authorization", girisBasic)
 istek.add_header("Content-type", "application/zip")
 istek.add_header("Accept", "*/*")
 istek.add_data(binaryVeri)
-
 istek.get_method = lambda: 'PUT'
 urllib2.urlopen(istek)

@@ -23,11 +23,11 @@ kAdi = str(arcpy.GetParameterAsText(3))
 sifre  = str(arcpy.GetParameterAsText(4))
 
 tempKlasor = tempfile.mkdtemp("gecici")
-
+sadeKatmanAdi = os.path.splitext(os.path.basename(katmanAdi))[0]
 arcpy.conversion.FeatureClassToShapefile(katmanAdi, tempKlasor)
 
 shapeFile = os.listdir(tempKlasor)
-zipDosya = zipfile.ZipFile((tempKlasor + os.sep + 'ShapeZip.zip'), 'w', zipfile.ZIP_DEFLATED)
+zipDosya = zipfile.ZipFile((tempKlasor + os.sep + sadeKatmanAdi + '.zip'), 'w', zipfile.ZIP_DEFLATED)
 
 for i in shapeFile:
 	zipDosya.write((tempKlasor + os.sep + i), i)
@@ -35,13 +35,11 @@ zipDosya.close()
 
 binaryVeri = open(zipDosya.filename, 'rb').read()
 
-def basic_authorization(user, password):
-	s = user + ":" + password
-	return "Basic " + s.encode("base64").rstrip()
+girisBasic = 'Basic ' + (kAdi + ':' + sifre).encode('base64').rstrip()
 
-url = geoserverRestUrl + '/workspaces/' + workspaceAdi + '/datastores/' + katmanAdi + '/file.shp'
+url = geoserverRestUrl + '/workspaces/' + workspaceAdi + '/datastores/' + sadeKatmanAdi + '/file.shp'
 istek = urllib2.Request(url)
-istek.add_header("Authorization", basic_authorization(kAdi, sifre))
+istek.add_header("Authorization", girisBasic)
 istek.add_header("Content-type", "application/zip")
 istek.add_header("Accept", "*/*")
 istek.add_data(binaryVeri)

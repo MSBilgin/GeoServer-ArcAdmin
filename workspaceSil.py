@@ -11,16 +11,16 @@
 
 import urllib2	
 
-def basic_authorization(user, password):
-	s = user + ":" + password
-	return "Basic " + s.encode("base64").rstrip()
 	
 geoserverRestUrl = str(arcpy.GetParameterAsText(0))
 workspaceAdi = str(arcpy.GetParameterAsText(1))
 kAdi = str(arcpy.GetParameterAsText(2))
 sifre  = str(arcpy.GetParameterAsText(3))
 
-istek = urllib2.Request(geoserverRestUrl + '/workspaces/' + workspaceAdi + '?recurse=true')
-istek.add_header("Authorization", basic_authorization("admin", "123"))
+girisBasic = 'Basic ' + (kAdi + ':' + sifre).encode('base64').rstrip()
+
+url = geoserverRestUrl + '/workspaces/' + workspaceAdi + '?recurse=true'
+istek = urllib2.Request(url)
+istek.add_header("Authorization", girisBasic)
 istek.get_method = lambda: 'DELETE'
 urllib2.urlopen(istek)
