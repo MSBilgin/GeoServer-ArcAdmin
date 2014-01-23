@@ -4,7 +4,7 @@
 # Tarih: 25 Aralik 2013														  #
 # Dosya adi: coveragestoreSil.py											  #
 # Aciklama: GeoServer 'da bulunan Coverage Store lari silmek icin kullanilir. #
-# Lisans: GPL v2															  #
+# Lisans: GPL v2.															  #
 #																			  #
 ###############################################################################
 
