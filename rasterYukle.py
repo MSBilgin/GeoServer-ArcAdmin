@@ -1,8 +1,7 @@
-
 ###############################################################################
 #																			  #
 # Yazar: Mehmet Selim BILGIN	mselimbilgin[at]yahoo.com					  #
-# Tarih: 25 Ocak 2013														  #
+# Tarih: 25 Aralik 2013														  #
 # Dosya adi: rasterYukle.py											 		  #
 # Aciklama: GeoServer 'a raster veri (TIFF) yuklemek icin kullanilir. 		  #
 # Lisans: GPL v2															  #
@@ -28,7 +27,7 @@ geciciTif = tempKlasor + os.sep + os.path.splitext(katmanAdi)[0] + '.tif'   #Ege
 arcpy.management.CopyRaster(katmanAdi, geciciTif)							
 
 zipDosya = zipfile.ZipFile((tempKlasor + os.sep + os.path.splitext(os.path.basename(geciciTif))[0] + '.zip'), 'w', zipfile.ZIP_DEFLATED) #zip dosyasinin adi direk olarak tif dosyasindan gelmektedir.
-zipDosya.write(geciciTif, os.path.basename(geciciTif)) #zip dosyasi içerisine direkt olarak tif dosyasi eklenir. Klasor yolu eklenmez.
+zipDosya.write(geciciTif, os.path.basename(geciciTif)) #zip dosyasi iï¿½erisine direkt olarak tif dosyasi eklenir. Klasor yolu eklenmez.
 zipDosya.close()
 
 binaryVeri = open(zipDosya.filename, 'rb').read()
