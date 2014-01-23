@@ -1,8 +1,7 @@
-
 ###################################################################################################
 #																								  #
 # Yazar: Mehmet Selim BILGIN	mselimbilgin[at]yahoo.com					 					  #
-# Tarih: 25 Ocak 2013																			  #
+# Tarih: 25 Aralik 2013																			  #
 # Dosya adi: zipYukle.py											  							  #
 # Aciklama: GeoServer 'a ZIP olarak arsivlenmis vektor veri (Shapefile) yuklemek icin kullanilir. #
 # Lisans: GPL v2																				  #
