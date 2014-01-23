@@ -1,8 +1,7 @@
-
 ###############################################################################
 #																			  #
 # Yazar: Mehmet Selim BILGIN	mselimbilgin[at]yahoo.com					  #
-# Tarih: 25 Ocak 2013														  #
+# Tarih: 25 Aralik 2013														  #
 # Dosya adi: coveragestoreSil.py											  #
 # Aciklama: GeoServer 'da bulunan Coverage Store lari silmek icin kullanilir. #
 # Lisans: GPL v2															  #
