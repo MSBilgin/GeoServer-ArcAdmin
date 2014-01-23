@@ -1,8 +1,7 @@
-
 ###############################################################################
 #																			  #
 # Yazar: Mehmet Selim BILGIN	mselimbilgin[at]yahoo.com					  #
-# Tarih: 25 Ocak 2013														  #
+# Tarih: 25 Aralik 2013														  #
 # Dosya adi: workspaceSil.py											      #
 # Aciklama: GeoServer 'da bulunan workspace 'leri silmek icin kullanilir.     #
 # Lisans: GPL v2															  #
