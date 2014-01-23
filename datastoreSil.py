@@ -1,8 +1,7 @@
-
 ###############################################################################
 #																			  #
 # Yazar: Mehmet Selim BILGIN	mselimbilgin[at]yahoo.com					  #
-# Tarih: 25 Ocak 2013														  #
+# Tarih: 26 Aralik 2013														  #
 # Dosya adi: datastoreSil.py											  	  #
 # Aciklama: GeoServer 'da bulunan Data Store lari silmek icin kullanilir.     #
 # Lisans: GPL v2															  #
